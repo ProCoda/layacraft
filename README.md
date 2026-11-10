@@ -64,7 +64,10 @@ Needs Node.js 20+ and, for the decision engine, Python 3.10+ (or a `laya-serve` 
 quickstart wants roughly 8 GB of RAM and 10 GB of free disk for the checkpoint.
 
 ```bash
-npm install
+# 0. get the code and dependencies (skip the clone if you already have a checkout)
+git clone https://github.com/ProCoda/layacraft.git
+cd layacraft
+npm ci
 
 # 1. decision engine, local and free: first run creates .venv and installs laya[serve]
 npm run laya
@@ -75,6 +78,10 @@ npm start -- --goal "Find diamond"
 # optional: a Paper test server on this machine (accepts the Minecraft EULA)
 ./scripts/setup-server.sh && npm run server
 ```
+
+If you are trying an unmerged pull request, check out its branch in your clone instead of `main`:
+`git fetch origin`, then `git switch --track origin/<branch>`. `npm ci` installs exactly the dependencies in
+`package-lock.json` for that branch.
 
 `npm run laya` serves `LAYA_MODELS=english` on `127.0.0.1:8000`. Override it as needed:
 
